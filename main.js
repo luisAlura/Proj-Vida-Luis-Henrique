@@ -37,14 +37,17 @@ function calculaTempo (tempoObjetivo){
     horas %=24;
 
     if (tempoFinal>0){
-    return dias + " dias " + horas + " horas " + minutos + " minutos " + segundos + " segundos ";
+    return [dias, horas, minutos, segundos];
     } else {
-        return "Missão Completa"
+        return [0,0,0,0];
     }
     }
     function atualizaCronometro(){
         for(let i=0; i<contadores.length; i++){
-            contadores[i].textContent = calculaTempo(tempos[i]);
+            document.getElementById("dias"+i).textContent = calculaTempo(tempos[i])[0];
+            document.getElementById("horas"+i).textContent = calculaTempo(tempos[i])[1];
+            document.getElementById("min"+i).textContent = calculaTempo(tempos[i])[2];
+            document.getElementById("seg"+i).textContent = calculaTempo(tempos[i])[3];
         }
     }
     function comecaCronometro(){
